@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="src">
+	<property environment="env"/>
+	<property name="debuglevel" value="source,lines,vars"/>
+	<property name="target" value="1.8"/>
+	<property name="source" value="1.8"/>
+	<path id="src.classpath">
+		<pathelement location="bin"/>
+	</path>
+	<target name="init">
+		<mkdir dir="bin"/>
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.launch"/>
+				<exclude name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+		<delete dir="build"/>
+	</target>
+
+	<target depends="build-project" name="build"/>
+
+	<target depends="init" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}"/>
+		<javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+			<src path="src"/>
+			<classpath refid="src.classpath"/>
+		</javac>
+	</target>
+
+	<target name="compile">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="src" destdir="build/classes"/>
+	</target>
+
+	<target name="jar" depends="clean, build">
+		<mkdir dir="build/jar" />
+		<jar destfile="build/jar/twitub.jar" basedir="bin">
+			<manifest>
+				<attribute name="Main-Class" value="main.java.com.ubo.tp.twitub.TwitubLauncher"/>
+			</manifest>
+		</jar>
+	</target>
+	<target name="run">
+		<java jar="build/jar/twitub.jar" fork="true"/>
+	</target> 
+</project>
