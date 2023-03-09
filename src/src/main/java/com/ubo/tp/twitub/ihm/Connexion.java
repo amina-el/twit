@@ -14,9 +14,9 @@ public class Connexion extends JFrame {
     private JButton loginButton;
     private ConnexionControler cConnex;
     User isConnected;
-
+    
     // Vue de la connexion
-	public Connexion(ConnexionControler cConnex) {
+	public Connexion(ConnexionControler cConnex){
 
      // Crée les champs de texte et le bouton de connexion
         this.loginField = new JTextField(20);
@@ -35,11 +35,10 @@ public class Connexion extends JFrame {
 
         // Ajoute le panneau au contenu de la fenêtre
         setContentPane(loginPanel);
-        loginButton.addActionListener(e -> cConnex.verifLogin(loginField.getText(), passwordField.getText()));
         loginButton.addActionListener(e -> {
         isConnected = cConnex.verifLogin(loginField.getText(), passwordField.getText());
         if (isConnected != null) {
-        	System.out.println("le user"+isConnected);
+        	//System.out.println("le user "+isConnected);
         	Window window = SwingUtilities.getWindowAncestor(loginPanel);
             window.dispose();
         }

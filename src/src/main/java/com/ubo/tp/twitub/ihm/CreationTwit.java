@@ -14,11 +14,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import controler.ConnexionControler;
 import controler.TwitControler;
 
 public class CreationTwit extends JFrame{
 	
-	private TwitControler twitControler;
+	//private TwitControler twitControler;
+	private ConnexionControler twitControler;
 	private final int MAX_MESSAGE_LENGTH = 250;
     private JLabel messageLabel;
     private JTextArea messageTextArea;
@@ -27,7 +29,7 @@ public class CreationTwit extends JFrame{
     String nom = "test";
     
 	
-	public CreationTwit(TwitControler cTwit) {
+	public CreationTwit(ConnexionControler cTwit) {
 		this.twitControler = cTwit;
 		setLayout(new BorderLayout());
 
@@ -44,9 +46,9 @@ public class CreationTwit extends JFrame{
         // Ajouter le bouton "Envoyer"
         sendButton = new JButton("Envoyer");
         add(sendButton, BorderLayout.SOUTH);
-        User ulo = twitControler.getUloggedIn();
-        User cuser = new User(UUID.randomUUID(),null,pass, nom,new HashSet<>(),"");
+        User ulo = twitControler.getUser();
+        //User cuser = new User(UUID.randomUUID(),null,pass, nom,new HashSet<>(),"");
         System.out.println("ulo: " + ulo);
-        sendButton.addActionListener(e -> twitControler.addTwit(cuser, messageTextArea.getText() ));
+        sendButton.addActionListener(e -> twitControler.addTwit(ulo, messageTextArea.getText() ));
 	}
 }

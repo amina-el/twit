@@ -13,7 +13,7 @@ public class InscriptionControler {
 	protected EntityManager mEntityManager;
 	
 
-	public InscriptionControler(IDatabase mDatabase) {
+	public InscriptionControler(IDatabase mDatabase, EntityManager mEntityManager) {
 		this.mDatabase = mDatabase;
 		this.mEntityManager = new EntityManager(mDatabase);
 	}

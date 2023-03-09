@@ -60,12 +60,7 @@ public class Twitub implements UserObserver, TwitObserver{
 	 */
 	protected String mUiClassName;
 	
-	protected ConnexionControler connexionControler;
 	
-	protected InscriptionControler inscriptionControler;
-	
-	protected TwitControler twitControler;
-
 	
 	/**
 	 * Constructeur.
@@ -88,7 +83,6 @@ public class Twitub implements UserObserver, TwitObserver{
 		// Initialisation du répertoire d'échange
 		this.initDirectory();
 		
-		this.connexionControler = new ConnexionControler(this.mDatabase);
 	}
 
 	/**
@@ -102,10 +96,10 @@ public class Twitub implements UserObserver, TwitObserver{
 	 */
 	protected void initGui() {
 		// this.mMainView...
-		this.mMainView = new TwitubMainView(mDatabase);
-		this.connexionControler = new ConnexionControler(mDatabase);
-		this.inscriptionControler = new InscriptionControler(mDatabase);
-		this.twitControler = new TwitControler(mDatabase);
+		this.mMainView = new TwitubMainView(mDatabase, mEntityManager);
+//		this.connexionControler = new ConnexionControler(mDatabase);
+//
+//		this.twitControler = new TwitControler(mDatabase);
 		
 	}
 
@@ -163,10 +157,6 @@ public class Twitub implements UserObserver, TwitObserver{
 		mWatchableDirectory.addObserver(mEntityManager);
 	}
 	
-	public User userLoggedIn() {
-		User u = connexionControler.getUser();
-		return u;
-	}
 
 	public void show() {
 		initGui();

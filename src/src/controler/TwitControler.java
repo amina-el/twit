@@ -16,10 +16,7 @@ public class TwitControler {
 	public TwitControler(IDatabase mDatabase) {
 		this.mDatabase = mDatabase;
 		this.mEntityManager = new EntityManager(mDatabase);	
-		this.controlerTwitub = new Twitub();
-	}
-	public User getUloggedIn() {
-		return controlerTwitub.userLoggedIn();
+	
 	}
 
 	/*

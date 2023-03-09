@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import controler.ConnexionControler;
 import controler.InscriptionControler;
 
 public class Inscription extends JFrame{
@@ -15,9 +17,10 @@ public class Inscription extends JFrame{
 	private JTextField nomField;
     private JPasswordField passwordField;
     private JButton inscriptionButton;
-    private InscriptionControler cInsc;
+    //private InscriptionControler cInsc;
+    private ConnexionControler cInsc;
 
-	public Inscription(InscriptionControler cInsc) {
+	public Inscription(ConnexionControler cInsc) {
 
      // Crée les champs de texte et le bouton de connexion
         this.tagField = new JTextField(20);
